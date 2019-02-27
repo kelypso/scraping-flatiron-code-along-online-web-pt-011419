@@ -8,14 +8,6 @@ class Scraper
   def get_page
     # opens with open-uri and parses with Nokogiri's HTML
     doc = Nokogiri::HTML(open("http://learn-co-curriculum.github.io/site-for-scraping/courses")) 
-    # iterates through collection and instantiates objects with attrs
-    # uses Nokogiri's #css to narrow in on specific HTML selector
-    doc.css(".post").each do |post|
-      course = Course.new
-      course.title = post.css("h2").text
-      course.schedule = post.css(".date").text
-      course.description = post.css("p").text
-    end
   end
   
   def get_courses
@@ -26,7 +18,14 @@ class Scraper
   end
   
   def make_courses
-    # instantiate a Course object with correctly scrapted attributes
+    # iterates through collection and instantiates objects with attrs
+    # uses Nokogiri's #css to narrow in on specific HTML selector
+    doc.css(".post").each do |post|
+      course = Course.new
+      course.title = post.css("h2").text
+      course.schedule = post.css(".date").text
+      course.description = post.css("p").text
+    end
   end
   
   def print_courses
