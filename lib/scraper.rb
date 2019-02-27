@@ -11,13 +11,14 @@ class Scraper
   end
   
   def get_courses
-    # operates on HTML doc using CSS selector
-    # grabs all HTML elements that contain a course attribute
+    # operates on #get_page HTML doc using CSS selector
+    # grabs all HTML elements that contain a course attribute based on selector
     # returns a collection of course offerings as Nokogiri XML elements
     self.get_page.css(".post")
   end
   
   def make_courses
+    # operates on collection of course offerings from #get_courses
     # iterates through collection and instantiates objects with attrs
     # uses Nokogiri's #css to narrow in on specific HTML selector
     self.get_courses.each do |post|
