@@ -20,7 +20,7 @@ class Scraper
   
   def get_courses
     # operates on HTML doc using CSS selector
-    # grabs all HTML elements that contain a course attr
+    # grabs all HTML elements that contain a course attribute
     # returns a collection of course offerings as Nokogiri XML elements
     self.get_page.css(".post")
   end
