@@ -20,7 +20,7 @@ class Scraper
   def make_courses
     # iterates through collection and instantiates objects with attrs
     # uses Nokogiri's #css to narrow in on specific HTML selector
-    doc.css(".post").each do |post|
+    self.get_courses.each do |post|
       course = Course.new
       course.title = post.css("h2").text
       course.schedule = post.css(".date").text
